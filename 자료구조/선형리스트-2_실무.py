@@ -15,6 +15,19 @@ def insert_data(position,friend):
         katok[i]=katok[i-1]
     # 3단계 : 포지션 자리에 친구 넣기
     katok[position]=friend
+
+def delete_data(position):
+    # 1단계 : 위치 친구 지우기
+    katok[position] = None
+    Klen = len(katok)
+    # 2단계 : 지운 친구 다음부터,마지막친구까지 앞으로 이동
+    for i in range(position+1,Klen):
+        katok[i-1]=katok[i]
+        katok[i]=None
+
+    # 3단계 : 마지막 칸 제거
+    del(katok[Klen-1])
+
 ## 변수
 katok= []
 
@@ -30,4 +43,7 @@ add_data('모모')
 print(katok)
 
 insert_data(3,'미나')
+print(katok)
+
+delete_data(4) #사나 카톡 차단
 print(katok)
