@@ -37,25 +37,32 @@ def peek():
         return
     return stack[top]
 
+def checkBracket(ex):
+    for i in ex:
+        if i == '(':
+            push('(')
+        elif i == ')':
+            data = pop()
+            if data == '(':
+                pass
+            else:
+                return False
+    if top == -1: # 스텍이 깔끔하게 비었냐
+        return True
+    else:
+        return False
+
 ## 변수부
-SIZE = 5 # 전역상수, 대문자.
+SIZE = 50 # 전역상수, 대문자.
 stack = [None for _ in range(SIZE)]
 top = -1
 
 ## 메인
-push('커피')
-push('녹차')
-# push('꿀물')
-# push('콜라')
-# push('환타')
-print('바닥 :',stack)
+expr='(())(())()())'
+retTF=checkBracket(expr)
 
-# push('게토레이')
-# print('바닥 :',stack)
-retData = pop()
-print('팝 데이터 -->',retData)
-print('다음 예정 -->',peek())
-
-
-retData = pop()
-print('팝 데이터 -->',retData)
+print(expr)
+if retTF:
+    print('success')
+else:
+    print('wrong')
