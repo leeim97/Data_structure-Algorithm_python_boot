@@ -58,7 +58,7 @@ stack = [None for _ in range(SIZE)]
 top = -1
 
 ## 메인
-expr='(())(())()())'
+expr='(())(())(a+b)()'
 retTF=checkBracket(expr)
 
 print(expr)
